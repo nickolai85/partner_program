@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -72,7 +72,6 @@ class RegisterController extends Controller
             $partner_id=null;
             $level=1;
         }
-
         return User::create([
             'partner_id'=>$partner_id,
             'level_id' => $level,

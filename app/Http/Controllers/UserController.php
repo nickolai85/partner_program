@@ -41,4 +41,11 @@ class UserController extends Controller
     }
 
 
+    public function referal_registration($partner){
+
+        return view('auth.register', compact('partner'));
+
+    }
+
+
 }
