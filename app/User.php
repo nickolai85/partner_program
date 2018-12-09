@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'partner_id','name', 'email', 'password','level_id'
     ];
 
     /**
@@ -26,4 +26,23 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function level()
+    {
+        return $this->belongsTo('App\Level');
+    }
+    public function referal(){
+        return $this->hasMany(self::class, 'user_id');
+    }
+    public function partner(){
+        return $this->belongsTo(self::class, 'user_id');
+    }
+    public function balance(){
+        return $this->hasMany(User_balance::class, 'user_id');
+    }
+    public function from_referal(){
+        return $this->hasMany(User_balance::class, 'referal_id');
+    }
+
+
 }
