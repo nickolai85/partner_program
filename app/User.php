@@ -32,10 +32,10 @@ class User extends Authenticatable
         return $this->belongsTo('App\Level');
     }
     public function referal(){
-        return $this->hasMany(self::class, 'user_id');
+        return $this->hasMany(self::class, 'partner_id');
     }
     public function partner(){
-        return $this->belongsTo(self::class, 'user_id');
+        return $this->belongsTo(self::class, 'partner_id');
     }
     public function balance(){
         return $this->hasMany(User_balance::class, 'user_id');

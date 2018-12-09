@@ -36,7 +36,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                    <a href="{{route('balance.create')}}">Add balance</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

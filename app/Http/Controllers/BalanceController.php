@@ -40,14 +40,16 @@ class BalanceController extends Controller
     {
         $balance_id = Balance::create(['amount'=>$request['amount']])->id;
         $user=User::findOrFail($request['user_id']);
-
-        if($user->level->name=='Referal'){
+        if($user->partner_id){
+            
             $partner_amount=$request['amount']*0.1;
             $referal_amount=$request['amount']-$partner_amount;
             $data = array(
                 array('balance_id'=>$balance_id, 'user_id'=> $request['user_id'],'referal_id'=> null ,'amount'=> $referal_amount),
-                array('balance_id'=>$balance_id, 'user_id'=> $user->user_id,'referal_id'=> $request['user_id'],'amount'=> $partner_amount)
+                array('balance_id'=>$balance_id, 'user_id'=> $user->partner_id,'referal_id'=> $request['user_id'],'amount'=> $partner_amount)
             );
+            
+
         }else{
             $data=$request->except(['_token']);
             $data['balance_id']=$balance_id;

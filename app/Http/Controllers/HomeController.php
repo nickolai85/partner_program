@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
@@ -24,10 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $users=User::latest()->paginate(50);
+
+        return view('home', compact('users'));
     }
-    public function welcome()
-    {
-        return view('welcome');
-    }
+
 }

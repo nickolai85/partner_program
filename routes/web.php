@@ -19,3 +19,5 @@ Route::post('/invitation_send', 'UserController@invitation_send')->name('invitat
 });
 Route::get('/referal_registration/{partner}', 'UserController@referal_registration')->name('referal_registration');
 Route::resource('balance','BalanceController');
+Route::get('/user/{id}', 'UserController@show')->name('user');
+

@@ -46,6 +46,10 @@ class UserController extends Controller
         return view('auth.register', compact('partner'));
 
     }
+    public function show($id){
+        $user=User::find($id);
+        return view('user.show', compact('user'));
+    }
 
 
 }
