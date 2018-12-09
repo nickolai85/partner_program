@@ -68,6 +68,7 @@
                                 </button>
                             </div>
                         </div>
+                        <input type="hidden" name="partner" value="{{isset($partner) ? $partner : '' }}">
                     </form>
                 </div>
             </div>

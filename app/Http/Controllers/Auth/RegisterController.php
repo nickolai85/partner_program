@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Crypt;
 
 class RegisterController extends Controller
 {
@@ -62,7 +63,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if ($data['partner']) {
+        $partner=User::where('email', '=',Crypt::decrypt($data['partner']))->first();
+        $partner_id=$partner->id;
+        $level=2;
+
+        }else{
+            $partner_id=null;
+            $level=1;
+        }
+
         return User::create([
+            'partner_id'=>$partner_id,
+            'level_id' => $level,
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
